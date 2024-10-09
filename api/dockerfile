@@ -4,5 +4,4 @@ COPY package.json package-lock.json ./
 RUN npm i --omit=dev
 COPY ./api/*.mjs ./src/
 ENTRYPOINT ["node"]
-EXPOSE 3000
 CMD ["src/index.mjs"]

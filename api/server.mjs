@@ -8,7 +8,7 @@ export function createServer() {
     return reply.send("sdfghj");
   });
 
-  fastify.get("/feature", async function handler(request, reply) {
+  fastify.get("/feature/feat_code", async function handler(request, reply) {
     const { code } = request.params;
     return reply.send({ code, enabled: true });
   });
