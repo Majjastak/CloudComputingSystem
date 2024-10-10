@@ -1,16 +1,18 @@
 import Fastify from "fastify";
+import { FeatureStore } from "./featureStore.mjs";
 
 export function createServer() {
   const fastify = Fastify();
+  const featureStore = new FeatureStore();
 
   fastify.get("/", async function handler(request, reply) {
     const { code } = request.params;
     return reply.send("sdfghj");
   });
 
-  fastify.get("/feature/", async function handler(request, reply) {
+  fastify.get("/feature/:code", async function handler(request, reply) {
     const { code } = request.params;
-    return reply.send({ code, enabled: true });
+    return reply.send({ code, enabled: featureStore.getFeatureKey(code) });
   });
 
   return fastify;
