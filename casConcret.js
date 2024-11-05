@@ -1,4 +1,4 @@
-    if (x === 0) {
+/*     if (x === 0) {
         // Add a new line to arbrestruct and containerStruct
         const newRowIndex = containerStruct.length;
         treeStruct.push([]);
@@ -79,4 +79,4 @@
         for (let i = treeStruct[x].length - 1; i >= y+1; i--) {
             treeStruct[x][i+1] = treeStruct[x][i];
         }
-    }
+    } */

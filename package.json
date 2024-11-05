@@ -14,14 +14,18 @@
     "nginx:all": "npm run nginx:clean; npm run nginx:build; npm run nginx:run",
     "redis:clean": "docker stop feature-redis;",
     "redis:run": "docker run -d --rm --network feature-net -v feature-redis-data --name feature-redis redis:7.4.0-bookworm redis-server",
-    "redis:connect": "docker run -it --rm --network feature-net redis:7.4.0-bookworm redis-cli -h feature-redis"
+    "redis:connect": "docker run -it --rm --network feature-net redis:7.4.0-bookworm redis-cli -h feature-redis",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "fastify": "^5.0.0",
     "redis": "^4.7.0"
-  }
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "description": ""
 }
