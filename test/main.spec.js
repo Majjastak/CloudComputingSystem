@@ -1,5 +1,6 @@
 const bankDAO = require("../bankDAOExercise/bankDAO");
 const bank = require("../bankDAOExercise/bank");
+const bankTransfer = require("../bankDAOExercise/bankTransfer");
 
 /* test("Should be called but not executed", () => {
   //Mock up puis
@@ -23,4 +24,15 @@ test("Should transmit parameter accountID", () => {
   expect(spy).toHaveBeenCalledWith(123);
 
   expect(balance).toBe(expectedBalance);
+});
+
+test("Should call transfer with accountID and amount", () => {
+  const accountID = 123;
+  const amount = 100;
+
+  const spyTransfer = jest.spyOn(bankTransfer, "transfer");
+
+  bank.transferMoney(accountID, amount);
+
+  expect(spyTransfer).toHaveBeenCalledWith(accountID, amount);
 });
