@@ -38,3 +38,16 @@ test("Should call transfer with accountID and amount", () => {
   expect(spyTransfer).toHaveBeenCalledWith(accountID, amount);
   expect(bankTransfer.transfer).toHaveBeenCalledWith(accountID, amount);
 });
+
+test("transfer is not executed", async () => {
+  const accountID = 123;
+  const amount = 100;
+  jest.spyOn(bankDAO, "debitAccount").mockReturnValue(null);
+  jest
+    .spyOn(bankTransfer, "transfer")
+    .mockRejectedValue(new Error("Transfer failed"));
+
+  await bank.transferMoney(accountID, amount);
+
+  expect(bankDAO.debitAccount).not.toHaveBeenCalled();
+});
