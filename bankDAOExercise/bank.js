@@ -8,6 +8,7 @@ function getBalance(accountId) {
 
 function transferMoney(accountId, amount) {
   bankTransfer.transfer(accountId, amount);
+  bankDAO.debitAccount(accountId, amount);
 }
 
 const bank = {

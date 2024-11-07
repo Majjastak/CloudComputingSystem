@@ -31,8 +31,10 @@ test("Should call transfer with accountID and amount", () => {
   const amount = 100;
 
   const spyTransfer = jest.spyOn(bankTransfer, "transfer");
+  jest.spyOn(bankDAO, "debitAccount").mockReturnValue(null);
 
   bank.transferMoney(accountID, amount);
 
   expect(spyTransfer).toHaveBeenCalledWith(accountID, amount);
+  expect(bankTransfer.transfer).toHaveBeenCalledWith(accountID, amount);
 });
