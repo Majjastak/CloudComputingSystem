@@ -5,14 +5,7 @@ function insertAccount(account) {
 }
 
 function retrieveAccountList() {
-  let copyWithoutDate = ACCOUNT_LIST.map((account) => {
-    return {
-      id: account.id,
-      lastName: account.lastName,
-      firstName: account.firstName,
-    };
-  });
-  return copyWithoutDate;
+  return ACCOUNT_LIST.map(({ creationDate, ...rest }) => rest);
 }
 
 function updateAccount(account) {
