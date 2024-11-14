@@ -1,4 +1,4 @@
-import { ACCOUNT_LIST } from "./database.mjs";
+import { accountCache } from "./cache.mjs";
 import { accountSummaryList } from "./queryDatabase.mjs";
 
 function retrieveAccountList() {
@@ -6,12 +6,7 @@ function retrieveAccountList() {
 }
 
 function retrieveAccount(id) {
-  let copyAccount = ACCOUNT_LIST.find((account) => account.id === id);
-  return {
-    id: copyAccount.id,
-    name: copyAccount.lastName + " " + copyAccount.firstName,
-    creationDate: copyAccount.creationDate,
-  };
+  return accountCache[id];
 }
 
 export const accountQueryDAO = {

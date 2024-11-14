@@ -1,4 +1,5 @@
 import { accountCommandDAO } from "./accountCommandDAO.mjs";
+import { accountQuery } from "./accountQuery.mjs";
 import { Account } from "./account.mjs";
 
 function addAccount({ lastName, firstName }) {
@@ -6,9 +7,16 @@ function addAccount({ lastName, firstName }) {
   accountCommandDAO.insertAccount(account);
 }
 
+function getAccountById(id) {
+  accountCommandDAO.retrieveAccountById(id);
+}
+
 function saveAccount({ id, lastName, firstName }) {
-  const account = new Account({ id, lastName, firstName });
-  accountCommandDAO.updateAccount(account);
+  let toUpdate = getAccountById(id);
+  toUpdate.lastName = lastName;
+  toUpdate.firstName = firstName;
+
+  accountCommandDAO.updateAccount(toUpdate);
 }
 
 export const accountCommand = {
