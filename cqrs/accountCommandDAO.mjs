@@ -24,6 +24,7 @@ function updateAccount(account) {
     ACCOUNT_LIST[index] = account;
     accountSummaryList[queryIndex] = rest;
   }
+
   accountCache[account.id] = mappingAccount(account);
   console.log(ACCOUNT_LIST);
 }
